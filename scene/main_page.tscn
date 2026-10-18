@@ -4,8 +4,15 @@
 [ext_resource type="Script" uid="uid://dt3byrmba8cmw" path="res://script/main_page.gd" id="1_kjc7l"]
 [ext_resource type="Texture2D" uid="uid://b6sjmhduy6mpa" path="res://art/level/Roman0.png" id="2_kjc7l"]
 [ext_resource type="Texture2D" uid="uid://y32ixdlng3rw" path="res://art/level/Roman1.png" id="3_tcohb"]
+[ext_resource type="Texture2D" uid="uid://b57378fvs7pog" path="res://art/level/arabic1.png" id="5_1qu3t"]
 [ext_resource type="Texture2D" uid="uid://uls1ff1yt3ik" path="res://art/level/Maya0.png" id="5_dl4ha"]
+[ext_resource type="Texture2D" uid="uid://7jpm8n5oke6" path="res://art/level/arabic0.png" id="6_eprvu"]
 [ext_resource type="Texture2D" uid="uid://vjffahjn5lj4" path="res://art/level/Maya1.png" id="6_nvwqn"]
+[ext_resource type="Texture2D" uid="uid://bkswfss5843nn" path="res://art/level/babylon0.png" id="9_3hboi"]
+[ext_resource type="Texture2D" uid="uid://cdu24qaxk8tm0" path="res://art/level/babylon1.png" id="10_7l72l"]
+[ext_resource type="Texture2D" uid="uid://5mgm52dqle7c" path="res://art/level/china1.png" id="11_51eky"]
+[ext_resource type="Texture2D" uid="uid://o1ewdsv3t06u" path="res://art/level/china0.png" id="12_0pqtp"]
+[ext_resource type="Texture2D" uid="uid://bc1gwdfhftxbc" path="res://art/main/thanks.png" id="13_0pqtp"]
 
 [node name="MainPage" type="Node2D" unique_id=713938879]
 script = ExtResource("1_kjc7l")
@@ -29,8 +36,8 @@ offset_left = 98.0
 offset_top = 103.0
 offset_right = 123.0
 offset_bottom = 130.0
-texture_normal = ExtResource("2_kjc7l")
-texture_pressed = ExtResource("3_tcohb")
+texture_normal = ExtResource("5_1qu3t")
+texture_pressed = ExtResource("6_eprvu")
 ignore_texture_size = true
 stretch_mode = 3
 
@@ -49,8 +56,8 @@ offset_left = 13.0
 offset_top = 108.0
 offset_right = 38.0
 offset_bottom = 135.0
-texture_normal = ExtResource("2_kjc7l")
-texture_pressed = ExtResource("3_tcohb")
+texture_normal = ExtResource("9_3hboi")
+texture_pressed = ExtResource("10_7l72l")
 ignore_texture_size = true
 stretch_mode = 3
 
@@ -59,8 +66,8 @@ offset_left = 183.0
 offset_top = 94.0
 offset_right = 208.0
 offset_bottom = 121.0
-texture_normal = ExtResource("2_kjc7l")
-texture_pressed = ExtResource("3_tcohb")
+texture_normal = ExtResource("11_51eky")
+texture_pressed = ExtResource("12_0pqtp")
 ignore_texture_size = true
 stretch_mode = 3
 
@@ -75,3 +82,8 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=339700014]
+
+[node name="Thanks" type="Sprite2D" parent="." unique_id=312815685]
+position = Vector2(-1, 18)
+texture = ExtResource("13_0pqtp")
+centered = false

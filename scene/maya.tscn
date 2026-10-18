@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://4xubdvko7gne"]
 
 [ext_resource type="Script" uid="uid://ihst3tlto2v2" path="res://script/main.gd" id="1_jipms"]
-[ext_resource type="Texture2D" uid="uid://c4w67ym4gpot1" path="res://art/back.png" id="2_avraf"]
+[ext_resource type="Texture2D" uid="uid://c4w67ym4gpot1" path="res://art/main/back.png" id="2_avraf"]
 [ext_resource type="AudioStream" uid="uid://c68qalm3sphh6" path="res://sound/music/maya.wav" id="2_xy0ej"]
 [ext_resource type="Texture2D" uid="uid://ol1ahng742cq" path="res://art/maya/stackMaya1.png" id="4_xy0ej"]
-[ext_resource type="Texture2D" uid="uid://wcfd1yuvorsn" path="res://art/calculator.png" id="5_hfa7x"]
+[ext_resource type="Texture2D" uid="uid://wcfd1yuvorsn" path="res://art/main/calculator.png" id="5_hfa7x"]
 [ext_resource type="Texture2D" uid="uid://bc7lyrkhpvkom" path="res://art/maya/plateMaya0.png" id="5_x805o"]
 [ext_resource type="Texture2D" uid="uid://cmsla70ih5tgj" path="res://art/maya/plateMaya1.png" id="6_hfa7x"]
 [ext_resource type="Script" uid="uid://c1u6ni584awno" path="res://script/calculator.gd" id="6_u2m4b"]
@@ -33,19 +33,20 @@
 [ext_resource type="Texture2D" uid="uid://de5ndfjkbdyli" path="res://art/buttons/e1.png" id="29_btr5v"]
 [ext_resource type="Texture2D" uid="uid://yitg8iua5s5h" path="res://art/buttons/b0.png" id="30_uutlo"]
 [ext_resource type="Texture2D" uid="uid://blsw4e4nyv616" path="res://art/buttons/b1.png" id="31_ihpcm"]
-[ext_resource type="Texture2D" uid="uid://cxskgm4sbfb6m" path="res://art/result.png" id="32_07lmt"]
+[ext_resource type="Texture2D" uid="uid://cxskgm4sbfb6m" path="res://art/main/result.png" id="32_07lmt"]
 [ext_resource type="Script" uid="uid://2bvpyahl8ge" path="res://result.gd" id="33_jkbqh"]
 [ext_resource type="FontFile" uid="uid://i6icbl4vxvw7" path="res://font/ChillBitmap_7px.ttf" id="34_wpuas"]
 [ext_resource type="Texture2D" uid="uid://dq6qlijtgxq70" path="res://art/maya/manMaya.png" id="36_jipms"]
 [ext_resource type="Texture2D" uid="uid://dwp3pfoln8k6d" path="res://art/maya/woodMaya1.png" id="37_xy0ej"]
 [ext_resource type="Texture2D" uid="uid://dx5yhtdt5uhfi" path="res://art/face/face_roman.png" id="38_houin"]
-[ext_resource type="Texture2D" uid="uid://bylvloc07oxiv" path="res://art/continue.png" id="39_rcm8n"]
+[ext_resource type="Texture2D" uid="uid://bylvloc07oxiv" path="res://art/main/continue.png" id="39_rcm8n"]
 [ext_resource type="Texture2D" uid="uid://8mph1sohbaci" path="res://art/maya/goodMaya.png" id="39_xy0ej"]
 [ext_resource type="Texture2D" uid="uid://1ky4dsdkuiqp" path="res://art/maya/flute1.png" id="42_xy0ej"]
 [ext_resource type="Texture2D" uid="uid://8fv7udmnurci" path="res://art/maya/flute0.png" id="43_x805o"]
 
 [node name="Main" type="Node2D" unique_id=1103393432]
 script = ExtResource("1_jipms")
+NowLevel = 3
 scene_music = ExtResource("2_xy0ej")
 
 [node name="Back" type="Sprite2D" parent="." unique_id=277184501]
@@ -228,6 +229,7 @@ texture = ExtResource("32_07lmt")
 centered = false
 script = ExtResource("33_jkbqh")
 ResultSet = 1
+TargetNum = 37960
 
 [node name="Text" type="Label" parent="Calculator/Result" unique_id=74467976]
 offset_left = 168.0

@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://cwexy3pi0rfy3"]
+
+[ext_resource type="Script" uid="uid://ihst3tlto2v2" path="res://script/main.gd" id="1_n861f"]
+[ext_resource type="Texture2D" uid="uid://c4w67ym4gpot1" path="res://art/main/back.png" id="2_rlv0o"]
+[ext_resource type="Texture2D" uid="uid://ffcvlfk75lq1" path="res://art/main/stack.png" id="3_fgqkf"]
+[ext_resource type="Texture2D" uid="uid://elufiaul0wda" path="res://art/main/plate.png" id="4_7pebw"]
+[ext_resource type="Texture2D" uid="uid://wcfd1yuvorsn" path="res://art/main/calculator.png" id="5_2wtg6"]
+[ext_resource type="Script" uid="uid://c1u6ni584awno" path="res://script/calculator.gd" id="6_wmdrd"]
+[ext_resource type="FontFile" uid="uid://r8n01ksbfplp" path="res://font/ChillBitmapSE_7px.ttf" id="7_xfq3s"]
+[ext_resource type="Texture2D" uid="uid://0i7810xh0f3l" path="res://art/buttons/10.png" id="8_xurjv"]
+[ext_resource type="Texture2D" uid="uid://ctw8imjhxwl1o" path="res://art/buttons/11.png" id="9_x7a4o"]
+[ext_resource type="Texture2D" uid="uid://b3mh4lhdoda8f" path="res://art/buttons/20.png" id="10_wng3w"]
+[ext_resource type="Texture2D" uid="uid://ckynnmwct12k3" path="res://art/buttons/21.png" id="11_3e7q0"]
+[ext_resource type="Texture2D" uid="uid://b51oqf52yhu67" path="res://art/buttons/30.png" id="12_amgwv"]
+[ext_resource type="Texture2D" uid="uid://bjlqk2j0k83rs" path="res://art/buttons/31.png" id="13_r14ac"]
+[ext_resource type="Texture2D" uid="uid://b8pnl2qw7inn3" path="res://art/buttons/40.png" id="14_isjmj"]
+[ext_resource type="Texture2D" uid="uid://b81p1dcg04oxt" path="res://art/buttons/41.png" id="15_o0x53"]
+[ext_resource type="Texture2D" uid="uid://c037lhspinrmb" path="res://art/buttons/50.png" id="16_f15rs"]
+[ext_resource type="Texture2D" uid="uid://datwjgqyydjkk" path="res://art/buttons/51.png" id="17_ucudy"]
+[ext_resource type="Texture2D" uid="uid://dh0xtln1y7d51" path="res://art/buttons/60.png" id="18_15en7"]
+[ext_resource type="Texture2D" uid="uid://byuh6gor74keh" path="res://art/buttons/61.png" id="19_mm1dc"]
+[ext_resource type="Texture2D" uid="uid://dlopibg6r3dpb" path="res://art/buttons/70.png" id="20_2egh2"]
+[ext_resource type="Texture2D" uid="uid://ddjggabnw8fbd" path="res://art/buttons/71.png" id="21_svwrp"]
+[ext_resource type="Texture2D" uid="uid://r47d2c81d2u4" path="res://art/buttons/80.png" id="22_sf5ph"]
+[ext_resource type="Texture2D" uid="uid://bs0flrxn14qm3" path="res://art/buttons/81.png" id="23_g7jmn"]
+[ext_resource type="Texture2D" uid="uid://lt5vysq6qefk" path="res://art/buttons/90.png" id="24_a08jk"]
+[ext_resource type="Texture2D" uid="uid://dhrefmmoj74rt" path="res://art/buttons/91.png" id="25_6wjh2"]
+[ext_resource type="Texture2D" uid="uid://dqtykjw5kuoyk" path="res://art/buttons/00.png" id="26_5vid4"]
+[ext_resource type="Texture2D" uid="uid://wsv4jrnsaxh1" path="res://art/buttons/01.png" id="27_g0e50"]
+[ext_resource type="Texture2D" uid="uid://cutaxqqxmcs6r" path="res://art/buttons/e0.png" id="28_wq4mq"]
+[ext_resource type="Texture2D" uid="uid://de5ndfjkbdyli" path="res://art/buttons/e1.png" id="29_7m0m7"]
+[ext_resource type="Texture2D" uid="uid://yitg8iua5s5h" path="res://art/buttons/b0.png" id="30_gcqcx"]
+[ext_resource type="Texture2D" uid="uid://blsw4e4nyv616" path="res://art/buttons/b1.png" id="31_kdrfe"]
+[ext_resource type="Texture2D" uid="uid://cxskgm4sbfb6m" path="res://art/main/result.png" id="32_rgi48"]
+[ext_resource type="Script" uid="uid://2bvpyahl8ge" path="res://result.gd" id="33_n1buu"]
+[ext_resource type="FontFile" uid="uid://i6icbl4vxvw7" path="res://font/ChillBitmap_7px.ttf" id="34_muvcp"]
+[ext_resource type="Texture2D" uid="uid://nb7432jy5eds" path="res://art/main/wood.png" id="35_32mg3"]
+[ext_resource type="Texture2D" uid="uid://dqa1ao8n1gvdk" path="res://art/babylon/man.png" id="36_n861f"]
+[ext_resource type="Texture2D" uid="uid://mlmorfyql4nb" path="res://art/babylon/good.png" id="37_rlv0o"]
+[ext_resource type="Texture2D" uid="uid://dx5yhtdt5uhfi" path="res://art/face/face_roman.png" id="38_0kcfk"]
+[ext_resource type="Texture2D" uid="uid://bylvloc07oxiv" path="res://art/main/continue.png" id="39_sljq6"]
+[ext_resource type="Texture2D" uid="uid://dq4sn1kewcyx1" path="res://art/buttons/lila1.png" id="40_w10ts"]
+[ext_resource type="Texture2D" uid="uid://mfy50k0etnsc" path="res://art/buttons/lila0.png" id="41_rscrh"]
+
+[node name="Main" type="Node2D" unique_id=1103393432]
+script = ExtResource("1_n861f")
+NowLevel = 5
+
+[node name="Back" type="Sprite2D" parent="." unique_id=277184501]
+z_index = -1
+position = Vector2(160, 120)
+texture = ExtResource("2_rlv0o")
+
+[node name="Stack" type="Sprite2D" parent="." unique_id=1175513310]
+z_index = 1
+position = Vector2(162, 25)
+texture = ExtResource("3_fgqkf")
+
+[node name="Plate1" type="Sprite2D" parent="Stack" unique_id=1265760003]
+position = Vector2(-66, 0)
+texture = ExtResource("4_7pebw")
+centered = false
+offset = Vector2(-15, -13)
+
+[node name="Plate2" type="Sprite2D" parent="Stack" unique_id=739224942]
+position = Vector2(66, 0)
+texture = ExtResource("4_7pebw")
+centered = false
+offset = Vector2(-15, -13)
+
+[node name="Calculator" type="Sprite2D" parent="." unique_id=629823268]
+z_index = 3
+texture = ExtResource("5_2wtg6")
+centered = false
+script = ExtResource("6_wmdrd")
+
+[node name="Text" type="RichTextLabel" parent="Calculator" unique_id=978736191]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -18.0
+offset_right = -137.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
+theme_override_fonts/normal_font = ExtResource("7_xfq3s")
+theme_override_fonts/bold_font = ExtResource("7_xfq3s")
+theme_override_fonts/bold_italics_font = ExtResource("7_xfq3s")
+theme_override_fonts/italics_font = ExtResource("7_xfq3s")
+theme_override_fonts/mono_font = ExtResource("7_xfq3s")
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 0
+horizontal_alignment = 2
+
+[node name="Button1" type="TextureButton" parent="Calculator" unique_id=1338240261]
+offset_left = 31.0
+offset_top = 114.0
+offset_right = 53.0
+offset_bottom = 141.0
+texture_normal = ExtResource("8_xurjv")
+texture_pressed = ExtResource("9_x7a4o")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button2" type="TextureButton" parent="Calculator" unique_id=1924883625]
+offset_left = 61.0
+offset_top = 114.0
+offset_right = 83.0
+offset_bottom = 141.0
+texture_normal = ExtResource("10_wng3w")
+texture_pressed = ExtResource("11_3e7q0")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button3" type="TextureButton" parent="Calculator" unique_id=132790887]
+offset_left = 90.0
+offset_top = 114.0
+offset_right = 112.0
+offset_bottom = 141.0
+texture_normal = ExtResource("12_amgwv")
+texture_pressed = ExtResource("13_r14ac")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button4" type="TextureButton" parent="Calculator" unique_id=534754782]
+offset_left = 28.0
+offset_top = 144.0
+offset_right = 50.0
+offset_bottom = 171.0
+texture_normal = ExtResource("14_isjmj")
+texture_pressed = ExtResource("15_o0x53")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button5" type="TextureButton" parent="Calculator" unique_id=1588933786]
+offset_left = 58.0
+offset_top = 144.0
+offset_right = 80.0
+offset_bottom = 171.0
+texture_normal = ExtResource("16_f15rs")
+texture_pressed = ExtResource("17_ucudy")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button6" type="TextureButton" parent="Calculator" unique_id=1581458763]
+offset_left = 87.0
+offset_top = 144.0
+offset_right = 109.0
+offset_bottom = 171.0
+texture_normal = ExtResource("18_15en7")
+texture_pressed = ExtResource("19_mm1dc")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button7" type="TextureButton" parent="Calculator" unique_id=1654937978]
+offset_left = 25.0
+offset_top = 174.0
+offset_right = 47.0
+offset_bottom = 201.0
+texture_normal = ExtResource("20_2egh2")
+texture_pressed = ExtResource("21_svwrp")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button8" type="TextureButton" parent="Calculator" unique_id=1824055677]
+offset_left = 55.0
+offset_top = 174.0
+offset_right = 77.0
+offset_bottom = 201.0
+texture_normal = ExtResource("22_sf5ph")
+texture_pressed = ExtResource("23_g7jmn")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button9" type="TextureButton" parent="Calculator" unique_id=520741848]
+offset_left = 85.0
+offset_top = 174.0
+offset_right = 107.0
+offset_bottom = 201.0
+texture_normal = ExtResource("24_a08jk")
+texture_pressed = ExtResource("25_6wjh2")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Button0" type="TextureButton" parent="Calculator" unique_id=2085685820]
+offset_left = 23.0
+offset_top = 203.0
+offset_right = 45.0
+offset_bottom = 230.0
+texture_normal = ExtResource("26_5vid4")
+texture_pressed = ExtResource("27_g0e50")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="ButtonE" type="TextureButton" parent="Calculator" unique_id=511186194]
+offset_left = 53.0
+offset_top = 203.0
+offset_right = 75.0
+offset_bottom = 230.0
+texture_normal = ExtResource("28_wq4mq")
+texture_pressed = ExtResource("29_7m0m7")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="ButtonB" type="TextureButton" parent="Calculator" unique_id=770193380]
+offset_left = 83.0
+offset_top = 203.0
+offset_right = 105.0
+offset_bottom = 230.0
+texture_normal = ExtResource("30_gcqcx")
+texture_pressed = ExtResource("31_kdrfe")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Result" type="Sprite2D" parent="Calculator" unique_id=1265881993]
+z_index = 3
+texture = ExtResource("32_rgi48")
+centered = false
+script = ExtResource("33_n1buu")
+ResultSet = 4
+TargetNum = 1792
+
+[node name="Text" type="Label" parent="Calculator/Result" unique_id=74467976]
+offset_left = 168.0
+offset_top = 122.0
+offset_right = 266.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("34_muvcp")
+
+[node name="TargetValue" type="Label" parent="Calculator/Result" unique_id=745752926]
+offset_left = 190.0
+offset_top = 217.0
+offset_right = 259.0
+offset_bottom = 240.0
+
+[node name="Sfx" type="AudioStreamPlayer" parent="Calculator" unique_id=808944294]
+
+[node name="Wood" type="Sprite2D" parent="." unique_id=1079433924]
+z_index = 2
+position = Vector2(162, 65)
+texture = ExtResource("35_32mg3")
+
+[node name="Man" type="Sprite2D" parent="." unique_id=332629959]
+texture = ExtResource("36_n861f")
+centered = false
+
+[node name="Good" type="Sprite2D" parent="." unique_id=928637741]
+texture = ExtResource("37_rlv0o")
+centered = false
+
+[node name="Face64Px" type="Sprite2D" parent="." unique_id=1611894009]
+position = Vector2(277, 68)
+texture = ExtResource("38_0kcfk")
+hframes = 5
+frame = 2
+
+[node name="Continue" type="TextureButton" parent="." unique_id=1809922037]
+z_index = 10
+offset_left = 228.0
+offset_top = 196.0
+offset_right = 318.0
+offset_bottom = 214.0
+texture_normal = ExtResource("39_sljq6")
+texture_pressed = ExtResource("39_sljq6")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="MusicButton" type="TextureButton" parent="." unique_id=979702798]
+offset_left = 6.0
+offset_right = 46.0
+offset_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource("40_w10ts")
+texture_pressed = ExtResource("41_rscrh")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=713537375]

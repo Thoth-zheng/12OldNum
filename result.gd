@@ -8,7 +8,9 @@ enum NumSet {
 	MAYA,
 	CHINESE,
 	STICK,
-	BABYLON
+	BABYLON,
+	ARABIC,
+	ROBOT
 }
 
 # Result 是一个静态输出口：外部设置 ResultNum / ResultSet 后调用 _show()。
@@ -22,20 +24,27 @@ enum NumSet {
 const TEXT_FONT = preload("res://font/ChillBitmap_16px.ttf")
 const ROMAN_FONT = preload("res://font/ChillBitmap_7px.ttf")
 const MAYA_FONT = preload("res://art/font/maya.png")
+const ARABIC_FONT = preload("res://art/font/arabic.png")
+const BABYLON_FONT = preload("res://art/font/babylon.png")
 
 # Maya 的图形字体原生 7px；中文/符号用 16px。
 # 文件名里的 7px 指字形的像素高度，字体实际按 8px 行高设计；
 # 用 font_size=8 才能落在像素网格上，否则会出现抗锯齿虚边。
 const MAYA_FONT_SIZE := 7
 const ROMAN_FONT_SIZE := 8
+const ARABIC_FONT_SIZE := 5 # arabic.png 每格 5x5，按原生尺寸渲染
+const ARABIC_GLYPH_SPACING := 1 # 字形靠左，字间留 1px 防止相邻数字粘连
+const BABYLON_FONT_SIZE := 16 # babylon.png 每格 16x16
+# 60 进制每一位固定用两个字符：十位（0=空白，1..5=A..E）+ 个位（0..9）。
+const BABYLON_TENS := "0ABCDE"
+const BABYLON_ONES := "0123456789"
 const TEXT_FONT_SIZE := 16
 const MAYA_LINE_SPACING := 2 # 玛雅数字上下叠放，至少留 2px 防止横杠粘连
 const RESULT_COLOR := Color(0.05882353, 0.21960784, 0.05882353, 1) # #0f380f，与计算器文字一致
 
 const MAYA_RECT_POS := Vector2(160, 87)
 const MAYA_RECT_SIZE := Vector2(108, 114)
-# 中文最大 19 字，16px 下每行 4 字、共 5 行（80px）；
-# 框高必须 >= 80px，否则最后一行会被裁掉。
+# 其他关卡共用的结果框；China 使用场景中 Text 摆好的上方对话框位置。
 const TEXT_RECT_POS := Vector2(180, 103)
 const TEXT_RECT_SIZE := Vector2(70, 84)
 
@@ -50,8 +59,15 @@ const CHINESE_BIG_UNITS: Array[String] = ["", "萬", "億", "兆", "京"]
 const ROMAN_VALUES: Array[int] = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
 const ROMAN_SYMBOLS: Array[String] = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
 
+var _arabic_spaced_font: FontVariation
+var _china_result_pos: Vector2
+var _china_result_size: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# China 的结果文字放在上方对话框里，位置由场景中的 Text 节点决定。
+	_china_result_pos = ResultText.position
+	_china_result_size = ResultText.size
 	show_target(TargetNum)
 	_show()
 
@@ -67,10 +83,13 @@ func show_result(num: int) -> void:
 func show_target(num: int) -> void:
 	TargetNum = num
 	_apply_style(TargetText)
-	TargetText.text = _format(num)
+	var line_chars := 0
+	if ResultSet == NumSet.CHINESE:
+		line_chars = _chinese_line_chars(TargetText.size.x)
+	TargetText.text = _format(num, line_chars)
 
 
-func _format(num: int) -> String:
+func _format(num: int, chinese_line_chars: int = 0) -> String:
 	# 静态状态机：按当前数字系统选择格式化方式。
 	match ResultSet:
 		NumSet.ROMAN:
@@ -78,11 +97,15 @@ func _format(num: int) -> String:
 		NumSet.MAYA:
 			return _to_maya(num)
 		NumSet.CHINESE:
-			return _to_chinese(num)
+			return _to_chinese_rtl(num, chinese_line_chars)
 		NumSet.STICK:
 			return _to_stick(num)
 		NumSet.BABYLON:
 			return _to_babylon(num)
+		NumSet.ARABIC:
+			return _to_arabic(num)
+		NumSet.ROBOT:
+			return _to_binary(num)
 		_:
 			return str(num)
 
@@ -102,6 +125,19 @@ func _apply_style(label: Label) -> void:
 			font_size = MAYA_FONT_SIZE
 			line_spacing = MAYA_LINE_SPACING
 			wrap = TextServer.AUTOWRAP_OFF
+		NumSet.BABYLON:
+			font = BABYLON_FONT
+			font_size = BABYLON_FONT_SIZE
+			wrap = TextServer.AUTOWRAP_ARBITRARY
+		NumSet.ARABIC:
+			font = _get_arabic_font()
+			font_size = ARABIC_FONT_SIZE
+			wrap = TextServer.AUTOWRAP_OFF
+		NumSet.ROBOT:
+			# 二进制位数多，用 7px 像素字体保证长串也能放进结果框。
+			font = ROMAN_FONT
+			font_size = ROMAN_FONT_SIZE
+			wrap = TextServer.AUTOWRAP_ARBITRARY
 
 	label.add_theme_font_override("font", font)
 	label.add_theme_font_size_override("font_size", font_size)
@@ -112,8 +148,30 @@ func _apply_style(label: Label) -> void:
 	label.autowrap_mode = wrap
 
 
+# 16px 中文每字占 16px，按 Label 宽度算出每行能放几个字。
+func _chinese_line_chars(width: float) -> int:
+	return maxi(1, int(width / TEXT_FONT_SIZE))
+
+
+func _get_arabic_font() -> Font:
+	if _arabic_spaced_font == null:
+		_arabic_spaced_font = FontVariation.new()
+		_arabic_spaced_font.base_font = ARABIC_FONT
+		_arabic_spaced_font.spacing_glyph = ARABIC_GLYPH_SPACING
+	return _arabic_spaced_font
+
+
 func _show() -> void:
-	# 结果气泡的框：玛雅是竖排图形，其他是小字符文本。
+	# China 使用场景里给 Text 摆好的上方对话框位置。
+	# 文本更新后再设尺寸：长文本把 Label 撑高后，下一次短结果才能缩回原框。
+	if ResultSet == NumSet.CHINESE:
+		_apply_style(ResultText)
+		ResultText.text = _format(ResultNum, _chinese_line_chars(_china_result_size.x))
+		ResultText.position = _china_result_pos
+		ResultText.size = _china_result_size
+		return
+
+	# 结果气泡的框：玛雅是竖排图形，其他关卡使用统一的结果区域。
 	if ResultSet == NumSet.MAYA:
 		ResultText.position = MAYA_RECT_POS
 		ResultText.size = MAYA_RECT_SIZE
@@ -210,6 +268,20 @@ func _to_chinese(n: int) -> String:
 	return result
 
 
+# China 从右往左书写，但换行仍从上到下：
+# 先按正常顺序切行，再把每一行单独反转。
+func _to_chinese_rtl(n: int, max_chars_per_line: int) -> String:
+	var text := _to_chinese(n)
+	if max_chars_per_line <= 0 or text.length() <= max_chars_per_line:
+		return text.reverse()
+
+	var lines := PackedStringArray()
+	for start in range(0, text.length(), max_chars_per_line):
+		var end := mini(start + max_chars_per_line, text.length())
+		lines.append(text.substr(start, end - start).reverse())
+	return "\n".join(lines)
+
+
 func _chinese_group(group: int) -> String:
 	var result := ""
 	var pending_zero := false
@@ -245,6 +317,25 @@ func _to_stick(n: int) -> String:
 	return " ".join(parts)
 
 
+# arabic.png 的字符范围是 0x30-0x39，即 ASCII 数字 0-9。
+# 因此文本仍传普通十进制字符串，由字体负责显示成东阿拉伯数字形状。
+func _to_arabic(n: int) -> String:
+	return str(n)
+
+
+# 机器人关卡：最简单的十进制 → 二进制。
+func _to_binary(n: int) -> String:
+	if n <= 0:
+		return "0"
+
+	var result := ""
+	var value := n
+	while value > 0:
+		result = ("1" if value % 2 == 1 else "0") + result
+		value /= 2
+	return result
+
+
 func _to_babylon(n: int) -> String:
 	if n <= 0:
 		return "0"
@@ -255,15 +346,13 @@ func _to_babylon(n: int) -> String:
 		digits.push_front(value % 60)
 		value /= 60
 
-	var parts := PackedStringArray()
+	var result := ""
 	for digit in digits:
-		if digit == 0:
-			parts.append("0")
-		else:
-			var tens := digit / 10
-			var ones := digit % 10
-			parts.append("<".repeat(tens) + "|".repeat(ones))
-	return " ".join(parts)
+		# 每个 60 进制位固定两位：十位字符 + 个位字符。
+		# 0 的字符格是空白的，用来占住进位后留下的位。
+		result += BABYLON_TENS[digit / 10]
+		result += BABYLON_ONES[digit % 10]
+	return result
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

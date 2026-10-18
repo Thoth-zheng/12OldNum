@@ -1,5 +1,6 @@
 extends Node2D
 
+
 # 精灵表 face_roman.png 从左到右的 5 帧。
 enum Face {
 	TOO_HIGH, # 猜得太大
@@ -22,6 +23,7 @@ const TILT_TIME := 0.6
 # 下一关地址从文本文件读取；文件不存在/为空/无效时默认重载当前场景。
 const NEXT_SCENE_FILE := "res://next_scene.txt"
 
+@export var NowLevel: int = 1;
 # 当前场景的背景音乐；其他场景可以在检查器里覆盖。
 @export var scene_music: AudioStream = preload("res://sound/music/roman.wav")
 
@@ -119,6 +121,9 @@ func _on_continue_pressed() -> void:
 	if _changing_scene:
 		return
 	_changing_scene = true
+
+	# 通关后至少解锁下一关；重玩旧关时 max 保证进度不会回退。
+	Level.level_present = maxi(Level.level_present, NowLevel + 1)
 
 	# 读取下一关地址；没有配置或路径无效时回到“读取自身”。
 	var target := _read_next_scene_path()
