@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blo4d3mlq68wi"]
 
 [ext_resource type="Texture2D" uid="uid://ffcvlfk75lq1" path="res://art/stack.png" id="1_203n6"]
-[ext_resource type="Script" uid="uid://ihst3tlto2v2" path="res://script/stack.gd" id="2_3t0ot"]
+[ext_resource type="Script" uid="uid://ihst3tlto2v2" path="res://script/main.gd" id="2_3t0ot"]
 [ext_resource type="Texture2D" uid="uid://c4w67ym4gpot1" path="res://art/back.png" id="2_yecaj"]
 [ext_resource type="Texture2D" uid="uid://elufiaul0wda" path="res://art/plate.png" id="4_rjgn5"]
 [ext_resource type="Texture2D" uid="uid://nb7432jy5eds" path="res://art/wood.png" id="5_rjgn5"]
@@ -34,9 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://ccrg68qtx7g0j" path="res://art/buttons/q1.png" id="31_1uyo3"]
 [ext_resource type="Texture2D" uid="uid://cxskgm4sbfb6m" path="res://art/result.png" id="33_1uyo3"]
 [ext_resource type="Script" uid="uid://2bvpyahl8ge" path="res://scene/result.gd" id="33_5nfl2"]
-[ext_resource type="FontFile" uid="uid://duf6e2nfbannn" path="res://art/font/maya.png" id="34_2xxac"]
+[ext_resource type="FontFile" uid="uid://i6icbl4vxvw7" path="res://font/ChillBitmap_7px.ttf" id="34_5nfl2"]
+[ext_resource type="Texture2D" uid="uid://cl50rr3cw4rl5" path="res://art/man.png" id="36_abr4m"]
+[ext_resource type="Texture2D" uid="uid://dtsavwf0vrpu3" path="res://art/good.png" id="37_6fntp"]
+[ext_resource type="Texture2D" uid="uid://caao67l62j2ly" path="res://art/face/face64px.png" id="38_6fntp"]
 
-[node name="Node2D" type="Node2D" unique_id=1103393432]
+[node name="Main" type="Node2D" unique_id=1103393432]
 script = ExtResource("2_3t0ot")
 
 [node name="Back" type="Sprite2D" parent="." unique_id=277184501]
@@ -86,6 +89,7 @@ theme_override_fonts/bold_font = ExtResource("7_i1cpw")
 theme_override_fonts/bold_italics_font = ExtResource("7_i1cpw")
 theme_override_fonts/italics_font = ExtResource("7_i1cpw")
 theme_override_fonts/mono_font = ExtResource("7_i1cpw")
+text = "00000000000"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -223,10 +227,27 @@ offset_left = 168.0
 offset_top = 122.0
 offset_right = 266.0
 offset_bottom = 145.0
-theme_override_fonts/font = ExtResource("34_2xxac")
-text = "1112JJ0"
+theme_override_fonts/font = ExtResource("34_5nfl2")
+
+[node name="TargetValue" type="Label" parent="Calculator/Result" unique_id=745752926]
+offset_left = 190.0
+offset_top = 217.0
+offset_right = 259.0
+offset_bottom = 240.0
 
 [node name="Wood" type="Sprite2D" parent="." unique_id=1079433924]
 z_index = 2
 position = Vector2(162, 65)
 texture = ExtResource("5_rjgn5")
+
+[node name="Man" type="Sprite2D" parent="." unique_id=332629959]
+texture = ExtResource("36_abr4m")
+centered = false
+
+[node name="Good" type="Sprite2D" parent="." unique_id=928637741]
+texture = ExtResource("37_6fntp")
+centered = false
+
+[node name="Face64Px" type="Sprite2D" parent="." unique_id=1611894009]
+position = Vector2(277, 68)
+texture = ExtResource("38_6fntp")
