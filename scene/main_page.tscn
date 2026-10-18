@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dws4qcxsdvlp8"]
+
+[ext_resource type="Texture2D" uid="uid://ddtj8pa753e4m" path="res://art/level/Level.png" id="1_aken3"]
+[ext_resource type="Script" uid="uid://dt3byrmba8cmw" path="res://script/main_page.gd" id="1_kjc7l"]
+[ext_resource type="Texture2D" uid="uid://b6sjmhduy6mpa" path="res://art/level/Roman0.png" id="2_kjc7l"]
+[ext_resource type="Texture2D" uid="uid://y32ixdlng3rw" path="res://art/level/Roman1.png" id="3_tcohb"]
+[ext_resource type="Texture2D" uid="uid://uls1ff1yt3ik" path="res://art/level/Maya0.png" id="5_dl4ha"]
+[ext_resource type="Texture2D" uid="uid://vjffahjn5lj4" path="res://art/level/Maya1.png" id="6_nvwqn"]
+
+[node name="MainPage" type="Node2D" unique_id=713938879]
+script = ExtResource("1_kjc7l")
+
+[node name="Level" type="Sprite2D" parent="." unique_id=580563915]
+texture = ExtResource("1_aken3")
+centered = false
+
+[node name="Roman1" type="TextureButton" parent="." unique_id=580442892]
+offset_left = 57.0
+offset_top = 148.0
+offset_right = 82.0
+offset_bottom = 175.0
+texture_normal = ExtResource("2_kjc7l")
+texture_pressed = ExtResource("3_tcohb")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Aarbic2" type="TextureButton" parent="." unique_id=1465224206]
+offset_left = 98.0
+offset_top = 103.0
+offset_right = 123.0
+offset_bottom = 130.0
+texture_normal = ExtResource("2_kjc7l")
+texture_pressed = ExtResource("3_tcohb")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Maya3" type="TextureButton" parent="." unique_id=1484068274]
+offset_left = 131.0
+offset_top = 144.0
+offset_right = 156.0
+offset_bottom = 171.0
+texture_normal = ExtResource("5_dl4ha")
+texture_pressed = ExtResource("6_nvwqn")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Barbylon5" type="TextureButton" parent="." unique_id=1047030614]
+offset_left = 13.0
+offset_top = 108.0
+offset_right = 38.0
+offset_bottom = 135.0
+texture_normal = ExtResource("2_kjc7l")
+texture_pressed = ExtResource("3_tcohb")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Chinese4" type="TextureButton" parent="." unique_id=226937909]
+offset_left = 183.0
+offset_top = 94.0
+offset_right = 208.0
+offset_bottom = 121.0
+texture_normal = ExtResource("2_kjc7l")
+texture_pressed = ExtResource("3_tcohb")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Robot0" type="TextureButton" parent="." unique_id=1395184576]
+offset_left = 236.0
+offset_top = 145.0
+offset_right = 261.0
+offset_bottom = 172.0
+texture_normal = ExtResource("2_kjc7l")
+texture_pressed = ExtResource("3_tcohb")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Sfx" type="AudioStreamPlayer" parent="." unique_id=339700014]

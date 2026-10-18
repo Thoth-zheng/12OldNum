@@ -16,9 +16,12 @@ signal submitted(value: int)
 @onready var ButtonE = $ButtonE;
 @onready var ButtonB = $ButtonB;
 @onready var text = $Text;
+@onready var Sfx: AudioStreamPlayer = $Sfx;
 
 # 上限 （10 位），超过这个值就显示 ERROR
 const MAX_VALUE = "10000000000"
+
+const CLICK_SFX = preload("res://sound/sfx/click.mp3")
 
 var Num = "0"
 var Overflow = false
@@ -35,7 +38,9 @@ func _ready() -> void:
 	ButtonB.pressed.connect(_on_back_pressed)
 	ButtonE.pressed.connect(_on_equals_pressed)
 	text.text = Num
-	
+
+	Sfx.stream = CLICK_SFX
+
 	var spaced := FontVariation.new()
 	spaced.base_font = preload("res://font/ChillBitmapSE_7px.ttf")
 	spaced.spacing_glyph = 6
@@ -77,6 +82,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_digit_pressed(Digit: int) -> void:
+	_play_click()
 	# 溢出状态下按数字键：清零并从这个数字重新开始
 	if Overflow:
 		Num = "0"
@@ -91,6 +97,7 @@ func _on_digit_pressed(Digit: int) -> void:
 
 
 func _on_equals_pressed() -> void:
+	_play_click()
 	# ERROR 或空输入不输出
 	if Overflow or Num.is_empty():
 		return
@@ -99,6 +106,7 @@ func _on_equals_pressed() -> void:
 
 
 func _on_back_pressed() -> void:
+	_play_click()
 	# 删除一位；删空后显示空白而不是 0
 	if Num.length() > 0:
 		Num = Num.substr(0, Num.length() - 1)
@@ -110,3 +118,8 @@ func _is_overflow(Value: String) -> bool:
 	if Value.length() != MAX_VALUE.length():
 		return Value.length() > MAX_VALUE.length()
 	return Value > MAX_VALUE
+
+
+# 所有计算器输入（鼠标或键盘）统一走这里发声。
+func _play_click() -> void:
+	Sfx.play()
